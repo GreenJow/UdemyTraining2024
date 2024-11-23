@@ -12,8 +12,7 @@ let iterations = 3;
                         i--;
                         continue;
                     }
-                    else if (numberOfFilms.length > 50 )
-                        {
+                    else if (numberOfFilms.length > 50 ) {
                             alert ('Слишком длинная строка');     
                             i--;
                             continue;          
@@ -30,9 +29,23 @@ let iterations = 3;
                         private: false
                     };
 
-            const movie = prompt('Один из последних просмотренных фильмов', '');
-            const rating = prompt('На сколько оцените его?','');
-            personalMovieDB.movies[movie] = rating;
+            for(let i = 0; i<iterations; i++) {
+                const movie = prompt('Один из последних просмотренных фильмов', '');
+        
+                if (!movie) {
+                    alert ('Введите корректные данные');
+                    i--;
+                    continue;
+                } else if (movie.length > 50) {
+                    alert ('Слишком длинная строка');
+                    i--;     
+                    continue; 
+                } else {
+                    const rating = prompt('На сколько оцените его?','');
+                    personalMovieDB.movies[movie] = rating;
+                    break;
+                }
+            };
 
             console.log(personalMovieDB);
             console.log(i);   
