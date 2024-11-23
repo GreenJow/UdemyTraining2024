@@ -1,35 +1,41 @@
 'use strict';
 
+let numberOfFilms = 0;
+let totalFilms = 0;
+let iterations = 3;
+    for(let i = 0; i<iterations; i++) {
 
-    for (let i = 0; i < 3; i++) {
-        let numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
-        const movie = prompt('Один из последних просмотренных фильмов', '');
-        const rating = prompt('На сколько оцените его?','');
-    
+        numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '');
 
-        if (numberOfFilms.length > 50 || movie.length > 50 || rating.length > 50) {
-            alert ('Слишком длинная строка');
-            i--;
-        }
-        else {
-            if (numberOfFilms === '' || movie === '' || rating === '') {
-                alert ('Введите корректные данные');
-                i--;
-            } 
-            else {
-                
-                const personalMovieDB = {
-                    count: numberOfFilms += numberOfFilms,
-                    movies: {},
-                    actors: [],
-                    genres: [],
-                    private: false
-                };
-                
-                personalMovieDB.movies[movie] = rating;
-                console.log(personalMovieDB);
-            }
-        };
-    
+        if (!numberOfFilms || isNaN(numberOfFilms)) {
+                        alert ('Введите корректные данные');
+                        i--;
+                        continue;
+                    }
+                    else if (numberOfFilms.length > 50 )
+                        {
+                            alert ('Слишком длинная строка');     
+                            i--;
+                            continue;          
+                        }
+                    else {
+                        totalFilms += +numberOfFilms;
+                    }
+
+                    const personalMovieDB = {
+                        count: totalFilms,
+                        movies: {},
+                        actors: [],
+                        genres: [],
+                        private: false
+                    };
+
+            const movie = prompt('Один из последних просмотренных фильмов', '');
+            const rating = prompt('На сколько оцените его?','');
+            personalMovieDB.movies[movie] = rating;
+
+            console.log(personalMovieDB);
+            console.log(i);   
     };
+
 
