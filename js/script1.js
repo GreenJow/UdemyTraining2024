@@ -3,6 +3,8 @@
 let numberOfFilms = 0;
 let totalFilms = 0;
 let iterations = 3;
+
+
     for(let i = 0; i<iterations; i++) {
 
         numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '');
@@ -46,9 +48,32 @@ let iterations = 3;
                     break;
                 }
             };
+            
+
+       
 
             console.log(personalMovieDB);
-            console.log(i);   
+            console.log(totalFilms);
+            console.log(i); 
+
+    };
+
+    let filmCounter = totalFilms;
+    if (filmCounter < 10) {
+        alert ('Просмотрено довольно мало фильмов');
+    }
+    else if (filmCounter >= 10 && filmCounter < 30 ) {
+        alert ('Вы классический зритель');
+    }
+    else if (filmCounter >= 30){
+        alert ('Вы киноман');
+    }
+    else {
+        alert ('Произошла ошибка');
+        
     };
 
 
+
+
+  
