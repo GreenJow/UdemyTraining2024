@@ -2,19 +2,18 @@
 
 let numberOfFilms = 0;
 let totalFilms = 0;
-let iterations = 3;
+let iterations = 1;
 
 
-    for(let i = 0; i<iterations; i++) {
-
+function start() { 
+    for(let i = 0; i < iterations; i++) {
         numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '');
-
-        if (!numberOfFilms || isNaN(numberOfFilms)) {
-                        alert ('Введите корректные данные');
+        if(!numberOfFilms || isNaN(numberOfFilms) || numberOfFilms == null) {
+            alert ('Введите корректные данные');
                         i--;
                         continue;
-                    }
-                    else if (numberOfFilms.length > 50 ) {
+        }
+        else if (numberOfFilms.length > 50) {
                             alert ('Слишком длинная строка');     
                             i--;
                             continue;          
@@ -22,14 +21,36 @@ let iterations = 3;
                     else {
                         totalFilms += +numberOfFilms;
                     }
+    }
+}
 
-                    const personalMovieDB = {
-                        count: totalFilms,
-                        movies: {},
-                        actors: [],
-                        genres: [],
-                        private: false
-                    };
+start();
+
+function rememberMyFilms() {   
+    
+    const personalMovieDB = {
+        count: totalFilms,
+        movies: {},
+        actors: [],
+        genres: [],
+        private: false
+    };
+    
+    let genresCounter = 0;
+    
+    function writeYourGenres() {
+        for(let i = 0; i < iterations; i++) {
+
+            genresCounter = prompt(`Ваш любимый жанр под номером ${i}`);
+            personalMovieDB.genres[i] = genresCounter;
+        };
+    };
+        
+    function showMyDB() {
+        if (personalMovieDB.private === false) {
+            console.log(personalMovieDB);
+        }
+    }
 
             for(let i = 0; i<iterations; i++) {
                 const movie = prompt('Один из последних просмотренных фильмов', '');
@@ -48,30 +69,39 @@ let iterations = 3;
                     break;
                 }
             };
+            writeYourGenres();
+            showMyDB();
             
-
-       
-
-            console.log(personalMovieDB);
             console.log(totalFilms);
-            console.log(i); 
 
-    };
+};
+    
+    rememberMyFilms();
 
-    let filmCounter = totalFilms;
-    if (filmCounter < 10) {
-        alert ('Просмотрено довольно мало фильмов');
+  
+
+    function detectPersonalLevel() {
+        let filmCounter = totalFilms;
+        if (filmCounter < 10) {
+            alert ('Просмотрено довольно мало фильмов');
+        }
+        else if (filmCounter >= 10 && filmCounter < 30 ) {
+            alert ('Вы классический зритель');
+        }
+        else if (filmCounter >= 30){
+            alert ('Вы киноман');
+        }
+        else {
+            alert ('Произошла ошибка');
+            
+        };
     }
-    else if (filmCounter >= 10 && filmCounter < 30 ) {
-        alert ('Вы классический зритель');
-    }
-    else if (filmCounter >= 30){
-        alert ('Вы киноман');
-    }
-    else {
-        alert ('Произошла ошибка');
-        
-    };
+
+    detectPersonalLevel();
+   
+
+    
+    
 
 
 
